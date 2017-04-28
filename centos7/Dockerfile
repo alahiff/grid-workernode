@@ -5,9 +5,6 @@ RUN yum -y install yum-priorities
 # EPEL
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm
 
-# UMD
-RUN yum -y install http://repository.egi.eu/sw/production/umd/4/centos7/x86_64/updates/umd-release-4.1.3-1.el7.centos.noarch.rpm
-
 # Basic dependencies
 RUN yum -y install freetype expat gcc glibc-headers compat-expat1 compat-openldap time man unzip quota attr
 
@@ -25,9 +22,9 @@ RUN yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-
     yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm && \
     yum -y install cvmfs
 
+# Singularity
+RUN yum -y install http://linuxsoft.cern.ch/wlcg/centos7/x86_64/singularity-2.2.1-1.osgup.el7.x86_64.rpm
+
 # Update & cleanup
 RUN yum -y update && \
     yum clean all
-
-# Required for jobs created by glite-WMS submitted to an ARC CE
-RUN touch /usr/etc/globus-user-env.sh

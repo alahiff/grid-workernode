@@ -2,6 +2,11 @@ FROM centos:6
 
 RUN yum -y install yum-priorities
 
+# CVMFS (for SUM tests only; install before adding other repos to ensure we have the latest version)
+RUN yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm \
+                   https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm && \
+    yum -y install cvmfs
+
 # EPEL
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 
@@ -25,10 +30,10 @@ RUN wget --no-check-certificate https://repo.gridpp.ac.uk/machinejobfeatures/mjf
     yum -y localinstall mjf-htcondor-00.14-1.noarch.rpm && \
     rm -f mjf-htcondor-00.14-1.noarch.rpm
 
-# CVMFS (for SUM tests only)
-RUN yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm && \
-    yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm && \
-    yum -y install cvmfs
+# Boost
+RUN yum -y install boost-date-time boost-filesystem boost-graph boost-iostreams boost-program-options \
+                   boost-python boost-regex boost-serialization boost-signals boost-system boost-test \
+                   boost-thread boost-wave
 
 # Update & cleanup
 RUN yum -y update && \
@@ -40,4 +45,3 @@ RUN mkdir -p /var/log/glexec && chown root:glexec /var/log/glexec
 
 # Required for jobs created by glite-WMS submitted to an ARC CE
 RUN touch /usr/etc/globus-user-env.sh
-

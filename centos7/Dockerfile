@@ -5,7 +5,7 @@ RUN yum -y install yum-priorities
 # CVMFS (for SUM tests only; install before adding other repos to ensure we have the latest version)
 RUN yum -y install https://ecsft.cern.ch/dist/cvmfs/cvmfs-release/cvmfs-release-latest.noarch.rpm \
                    https://ecsft.cern.ch/dist/cvmfs/cvmfs-config/cvmfs-config-default-latest.noarch.rpm && \
-    yum -y install cvmfs
+    yum -y install cvmfs cvmfs-config-egi
 
 # EPEL
 RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm

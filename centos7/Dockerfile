@@ -28,7 +28,7 @@ RUN yum -y install boost-date-time boost-filesystem boost-graph boost-iostreams 
                    boost-thread boost-wave
 
 # Singularity
-RUN yum -y install http://linuxsoft.cern.ch/wlcg/centos7/x86_64/singularity-2.2.1-1.osgup.el7.x86_64.rpm
+RUN yum -y install singularity
 
 # Update & cleanup
 RUN yum -y update && \

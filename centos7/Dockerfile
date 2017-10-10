@@ -14,7 +14,7 @@ RUN yum -y install https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.n
 RUN yum -y install freetype expat gcc glibc-headers compat-expat1 compat-openldap time man unzip quota attr
 
 # Install HEP_OSlibs
-RUN yum -y install http://linuxsoft.cern.ch/wlcg/centos7/x86_64/HEP_OSlibs-7.1.7-0.el7.cern.x86_64.rpm
+RUN yum -y install http://linuxsoft.cern.ch/wlcg/centos7/x86_64/HEP_OSlibs-7.1.10-0.el7.cern.x86_64.rpm
 
 # Machine job features
 RUN yum -y install wget
@@ -28,7 +28,8 @@ RUN yum -y install boost-date-time boost-filesystem boost-graph boost-iostreams 
                    boost-thread boost-wave
 
 # Singularity
-RUN yum -y install singularity
+RUN yum -y install http://linuxsoft.cern.ch/wlcg/centos7/x86_64/singularity-2.3.1-0.1.4.osg34.el7.x86_64.rpm \
+                   http://linuxsoft.cern.ch/wlcg/centos7/x86_64/singularity-runtime-2.3.1-0.1.4.osg34.el7.x86_64.rpm
 
 # Update & cleanup
 RUN yum -y update && \

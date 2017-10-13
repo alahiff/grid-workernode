@@ -37,6 +37,10 @@ RUN wget --no-check-certificate https://repo.gridpp.ac.uk/machinejobfeatures/mjf
 RUN yum -y install boost-date-time boost-filesystem boost-graph boost-iostreams boost-program-options \
                    boost-python boost-regex boost-serialization boost-signals boost-system boost-test \
                    boost-thread boost-wave
+                   
+# Singularity
+RUN yum -y install http://linuxsoft.cern.ch/wlcg/sl6/x86_64/singularity-2.3.2-0.1.1.osg34.el6.x86_64.rpm \
+                   http://linuxsoft.cern.ch/wlcg/sl6/x86_64/singularity-runtime-2.3.2-0.1.1.osg34.el6.x86_64.rpm
 
 # Update & cleanup
 RUN yum -y update && \
